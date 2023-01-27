@@ -18,5 +18,18 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+  clickhouse: 
+    image: clickhouse/clickhouse-server
+    environment:
+      - CLICKHOUSE_DB=example_db
+      - CLICKHOUSE_USER=example_db
+      - CLICKHOUSE_PASSWORD=example_db
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+    ports:
+      - "9000:9000"
+      - "8123:8123"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse/
 volumes:
-  zookeeper_data:
+  zookeeper_data: {}
+  clickhouse_data: {}
