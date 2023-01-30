@@ -8,6 +8,8 @@ services:
       - zookeeper_data:/var/lib/zookeeper/data
   kafka:
     image: confluentinc/cp-kafka:7.3.0
+    ports:
+      - "9092:9092"
     depends_on:
       - zookeeper
     environment:
